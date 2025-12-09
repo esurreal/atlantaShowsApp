@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+httpx
+sqlalchemy[asyncio]
+asyncpg
+pydantic
+python-dotenv
+rapidfuzz

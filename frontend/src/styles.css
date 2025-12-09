@@ -1,0 +1,17 @@
+:root{
+  --bg: #ffffff;
+  --muted: #666666;
+  --accent: #2b6cb0;
+  --card: #f7f9fb;
+  --border: #e6eef8;
+}
+body{font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background:var(--bg); color:#111; margin:0}
+.app-container{max-width:900px;margin:24px auto;padding:16px}
+.site-header h1{margin:0;font-size:1.75rem}
+.site-header p{margin:4px 0 16px;color:var(--muted)}
+.event{display:flex;padding:12px;border:1px solid var(--border);background:var(--card);border-radius:8px;margin-bottom:12px}
+.event-time{min-width:160px;color:var(--muted);font-size:0.95rem}
+.event-title{margin:0 0 6px;font-size:1.05rem}
+.event-venue{color:var(--muted);font-size:0.9rem}
+.event-links a{margin-right:12px;color:var(--accent);text-decoration:none}
+.empty{color:var(--muted);padding:24px;text-align:center}
