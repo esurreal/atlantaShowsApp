@@ -1,16 +1,36 @@
-FROM node:18-alpine AS deps
-WORKDIR /app
-COPY package.json package-lock.json* ./
-RUN npm ci
-
+# ===========================
+# Stage 1 — Build React App
+# ===========================
 FROM node:18-alpine AS builder
+
+# Install CA certificates for SSL verification
+RUN apk add --no-cache bash ca-certificates
+
+# Set working directory
 WORKDIR /app
+
+# Copy package.json and package-lock.json first
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy all source code
 COPY . .
+
+# Build the React/Vite app
 RUN npm run build
 
-FROM node:18-alpine AS runner
-WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
-COPY --from=builder /app/dist ./dist
-RUN npm install -g serve
-CMD ["serve", "-s", "dist", "-l", "5173"]
+# ===========================
+# Stage 2 — Serve via Nginx
+# ===========================
+FROM nginx:alpine
+
+# Copy built files from builder stage
+COPY --from=builder /app/dist /usr/share/nginx/html
+
+# Expose default HTTP port
+EXPOSE 80
+
+# Start Nginx
+CMD ["nginx", "-g", "daemon off;"]
