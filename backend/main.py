@@ -48,3 +48,5 @@ async def get_events():
 @app.get("/health")
 async def health():
     return {"status": "ok", "time": datetime.utcnow().isoformat()}
+
+__init__.py
