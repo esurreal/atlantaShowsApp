@@ -1,12 +1,12 @@
 FROM python:3.11-slim
 
-WORKDIR /app/app
+WORKDIR /app
 
 # Copy requirements FIRST
-COPY backend/requirements.txt ../requirements.txt
+COPY backend/requirements.txt ./requirements.txt
 
 # Install dependencies
-RUN pip install --no-cache-dir -r ../requirements.txt
+RUN pip install --no-cache-dir -r /requirements.txt
 
 # Copy backend code
 COPY backend/ ./app
@@ -15,4 +15,4 @@ COPY backend/ ./app
 EXPOSE 8000
 
 # Start FastAPI
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
