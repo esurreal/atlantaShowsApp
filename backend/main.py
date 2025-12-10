@@ -2,8 +2,8 @@ from fastapi import FastAPI
 from datetime import datetime
 import os
 import uvicorn
-from models import fetch_events
-from models import fetch_eventbrite_by_location, normalize_eventbrite
+from .models import fetch_events
+from .models import fetch_eventbrite_by_location, normalize_eventbrite
 
 app = FastAPI(title="Atlanta Concerts API")
 
