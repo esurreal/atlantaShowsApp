@@ -4,4 +4,4 @@ def fetch_events():
         {"id": 2, "name": "Concert B"}
     ]
 
-__init__.py
+
