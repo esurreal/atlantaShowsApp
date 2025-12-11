@@ -7,3 +7,5 @@ pydantic
 python-dotenv
 rapidfuzz
 databases
+psycopg2-binary
+
