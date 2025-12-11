@@ -1,7 +1,13 @@
-from dotenv import load_dotenv
-load_dotenv()
-
 import os
+from dotenv import load_dotenv
+
+env_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), ".env")
+print("DEBUG — loading .env from:", env_path)
+
+load_dotenv(env_path)
+
+print("DEBUG — DATABASE_URL:", os.getenv("DATABASE_URL"))
+print("DEBUG — BANDSINTOWN_APP_ID:", os.getenv("BANDSINTOWN_APP_ID"))
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 from datetime import datetime, timezone
