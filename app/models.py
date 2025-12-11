@@ -4,6 +4,7 @@ from datetime import datetime, timezone
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import sessionmaker
 
+engine = create_async_engine(DATABASE_URL, future=True)
 # Load DATABASE_URL
 DATABASE_URL = os.getenv("DATABASE_URL")
 
