@@ -49,6 +49,13 @@ async def get_events():
 async def health():
     return {"status": "ok", "time": datetime.utcnow().isoformat()}
 
+@app.get("/test-eventbrite")
+async def test_eventbrite():
+    from .ingest import fetch_eventbrite_by_location
+    events = await fetch_eventbrite_by_location(33.7490, -84.3880)  # Atlanta
+    return events
+
+
 
 
 
