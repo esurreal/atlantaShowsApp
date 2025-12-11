@@ -6,6 +6,7 @@ import os
 import uvicorn
 from .models import fetch_events
 from .ingest import fetch_eventbrite_by_location, normalize_eventbrite
+from .ingest import fetch_bandsintown_for_artist, normalize_bandsintown
 
 app = FastAPI()
 
@@ -61,13 +62,12 @@ async def test_eventbrite():
         return {"error": str(e)}
 
 
-@app.get("/test-bandsintown")
-async def test_bandsintown():
-    from .ingest import fetch_bandsintown_for_artist
+@app.get("/bandsintown")
+async def get_bandsintown_events(artist: str):
+    raw_events = await fetch_bandsintown_for_artist(artist)
+    return [normalize_bandsintown(e) for e in raw_events]
+   
 
-    artist = "Clutch"  # you can change this to any artist
-    events = await fetch_bandsintown_for_artist(artist)
-    return {"artist": artist, "events": events[:5]} 
 
 
 
