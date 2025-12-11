@@ -25,7 +25,7 @@ async def fetch_eventbrite_by_location(lat: float, lon: float, within_miles: int
     }
     params["token"] = EVENTBRITE_TOKEN  # add token to query
     async with httpx.AsyncClient() as client:
-    r = await client.get(url, params=params, timeout=20)
+        r = await client.get(url, params=params, timeout=20)
         r.raise_for_status()
         return r.json().get("events", [])
 
