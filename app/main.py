@@ -49,4 +49,4 @@ async def get_events():
 async def health():
     return {"status": "ok", "time": datetime.utcnow().isoformat()}
 
-__init__.py
+
