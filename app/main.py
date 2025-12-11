@@ -54,9 +54,12 @@ async def health():
 
 @app.get("/test-eventbrite")
 async def test_eventbrite():
-    from .ingest import fetch_eventbrite_by_location
-    events = await fetch_eventbrite_by_location(33.7490, -84.3880)  # Atlanta
-    return events
+    try:
+        events = await fetch_eventbrite_by_location(33.7490, -84.3880)
+        return {"count": len(events), "sample": events[:1]}
+    except Exception as e:
+        return {"error": str(e)}
+
 
 @app.get("/test-bandsintown")
 async def test_bandsintown():
