@@ -20,8 +20,8 @@ async def fetch_eventbrite_by_location(lat: float, lon: float, within_miles: int
         "location.latitude": lat,
         "location.longitude": lon,
         "location.within": f"{within_miles}mi",
-        "expand": "venue"
-        "token": "ZP72HSDXQ3KPERG6J4F5"
+        "expand": "venue",
+        "token": EVENTBRITE_TOKEN
     }
     params["token"] = EVENTBRITE_TOKEN  # add token to query
     async with httpx.AsyncClient() as client:
