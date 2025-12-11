@@ -1,11 +1,16 @@
 from dotenv import load_dotenv
-import os
 load_dotenv()
+
+import os
+
 DATABASE_URL = os.getenv("DATABASE_URL")
 from datetime import datetime, timezone
 
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import sessionmaker
+
+print("DEBUG — DATABASE_URL:", os.getenv("DATABASE_URL"))
+print("DEBUG — BANDSINTOWN_APP_ID:", os.getenv("BANDSINTOWN_APP_ID"))
 
 engine = create_async_engine(DATABASE_URL, future=True)
 # Load DATABASE_URL
