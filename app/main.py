@@ -55,7 +55,13 @@ async def test_eventbrite():
     events = await fetch_eventbrite_by_location(33.7490, -84.3880)  # Atlanta
     return events
 
+@app.get("/test-bandsintown")
+async def test_bandsintown():
+    from .ingest import fetch_bandsintown_for_artist
 
+    artist = "Clutch"  # you can change this to any artist
+    events = await fetch_bandsintown_for_artist(artist)
+    return {"artist": artist, "events": events[:5]} 
 
 
 
