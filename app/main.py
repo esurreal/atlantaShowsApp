@@ -12,6 +12,8 @@ from .ingest import (
     normalize_eventbrite,
     fetch_bandsintown_for_artist,
 )
+print("DEBUG — BANDSINTOWN_APP_ID:", os.getenv("BANDSINTOWN_APP_ID"))
+
 
 app = FastAPI()
 
