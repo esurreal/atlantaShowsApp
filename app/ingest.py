@@ -15,12 +15,12 @@ async def fetch_bandsintown_for_artist(artist_name: str):
         return r.json()
 
 async def fetch_eventbrite_by_location(lat: float, lon: float, within_miles: int = 25):
-    url = "https://www.eventbriteapi.com/v3/events/search/"
+    url = "https://www.eventbriteapi.com/v3/events/search"
     params = {
         "location.latitude": lat,
         "location.longitude": lon,
         "location.within": f"{within_miles}mi",
-        "expand": "venue",
+        "expand": "venue"
     }
     headers = {"Authorization": f"Bearer {EVENTBRITE_TOKEN}"}  # <-- token goes here, not in params
     async with httpx.AsyncClient() as client:
