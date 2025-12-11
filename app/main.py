@@ -1,9 +1,10 @@
-from fastapi import FastAPI
-from datetime import datetime
-import os
-
 from dotenv import load_dotenv
 load_dotenv()  # Loads .env when running local
+
+import os
+
+from fastapi import FastAPI
+from datetime import datetime
 
 from .models import fetch_events
 from .ingest import (
