@@ -49,8 +49,6 @@ async def get_events():
 async def health():
     return {"status": "ok", "time": datetime.utcnow().isoformat()}
 
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8000))  # Railway sets this automatically
-    uvicorn.run("app.main:app", host="0.0.0.0", port=port)
+
 
 
