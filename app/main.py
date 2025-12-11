@@ -45,6 +45,7 @@ print("Database engine initialized successfully")
 
 @app.get("/events")
 async def get_events():
+    events = await fetch_events()
     return fetch_events()
 
 @app.get("/health")
