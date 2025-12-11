@@ -4,7 +4,7 @@ from datetime import datetime, timezone
 from rapidfuzz import fuzz
 
 BANDSINTOWN_APP_ID = os.getenv("BANDSINTOWN_APP_ID")
-EVENTBRITE_TOKEN = os.getenv("ZP72HSDXQ3KPERG6J4F5")
+EVENTBRITE_TOKEN = os.getenv("EVENTBRITE_TOKEN")
 
 async def fetch_bandsintown_for_artist(artist_name: str):
     url = f"https://rest.bandsintown.com/artists/{artist_name}/events"
